@@ -1,10 +1,11 @@
-import {mutation} from "./_generated/server"
+import {mutation, query} from "./_generated/server"
 import {v} from "convex/values"
 
 export default function getImage(num:Number) {
     return `https://raw.githubusercontent.com/AntonioErdeljac/next14-miro-clone/master/public/placeholders/${num}.svg` 
 }
-const randomImage = getImage(Math.floor(Math.random() * 10))
+const randomImage = getImage(Math.floor((Math.random() * 10) + 1))
+
 export const create = mutation({
     args:{
         orgId:v.string(),
@@ -36,9 +37,23 @@ export const remove = mutation({
 
         if(!identity) throw new Error("Unauthorized")
 
+        const userId = identity.subject
+        
+        const existingFavourite = await ctx.db.query("userFavourites")
+        .withIndex("by_user_board" , (q)=>
+        q.eq("userId",userId)
+        .eq("boardId",args.id)
+        )
+        .unique()
+
+        if(existingFavourite){
+            await ctx.db.delete(existingFavourite._id)
+        }
+
         if(identity) {
             ctx.db.delete(args.id)
         }
+
     }
 })
 
@@ -122,5 +137,14 @@ export const unfavourite = mutation({
 
         const fav = await ctx.db.delete(existingFavourite._id)
         return fav
+    }
+})
+
+export const get = query({
+    args:{id:v.id("boards")},
+    handler:async(ctx,args)=>{
+        const board = await ctx.db.get(args.id)
+
+        return board
     }
 })

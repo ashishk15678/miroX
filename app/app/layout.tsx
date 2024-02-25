@@ -25,7 +25,6 @@ export default function RootLayout({
           <Toaster/>
           <ModalProvider/>
         </ProvideWithClerkAndConvex>
-        
         </body>
     </html>
   );

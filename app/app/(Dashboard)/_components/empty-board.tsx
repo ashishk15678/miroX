@@ -6,8 +6,10 @@ import Image from "next/image";
 import { useOrganization } from "@clerk/nextjs";
 import {useApiMutation} from "@/hooks/use-mutation"
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const EmptyBoard = () => {
+    const router = useRouter()
     const {organization} = useOrganization()
     const {mutate,pending} = useApiMutation(api.board.create)
 
@@ -20,6 +22,7 @@ export const EmptyBoard = () => {
         })
         .then((id)=>{
             toast.success("Board created succesfully")
+            router.push(`/board/${id}`)
         })
         .catch(()=>{
             toast.error("Board not created :((")
