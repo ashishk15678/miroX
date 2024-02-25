@@ -2,6 +2,4 @@
 
 ## its not complete yet
 
-'''tsx
-blank
-'''
+### this is gonna take a while fs..!!

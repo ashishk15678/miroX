@@ -2,20 +2,12 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+We are currently new and thus have only version 0.0.1 which is not complete yet , please wait
 
 ## Reporting a Vulnerability
+You can always report any vulenaribilty or security flaw to me at [instagram](https://instagram.com/ashishkumar15678) , after this project's completion this security file will be updated as well!!
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+### the wait will be worth it
+```
+Believe us
+```
